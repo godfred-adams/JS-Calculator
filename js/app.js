@@ -1,5 +1,6 @@
 const buttonElement = document.querySelectorAll('.js-button');
 const screenElement = document.querySelector('.screen-number');
+const themeElement = document.querySelector('.theme-btn');
 
 let calculation = JSON.parse(localStorage.getItem('calculation')) || '';
 
@@ -19,14 +20,13 @@ document.querySelector('.js-equal-button')
     calculation = eval(calculation);
     saveCalculation();
     displayCalculation();
-  }
-);
+});
 
 document.querySelector('.js-del-button')
   .addEventListener('click', () => {
     calculation = calculation.substring(0,calculation.length -1);
     displayCalculation();
-  });
+});
 
 document.querySelector('.js-reset-button')
   .addEventListener('click', () => {
@@ -35,7 +35,12 @@ document.querySelector('.js-reset-button')
     displayCalculation();
   });
 
-
+themeElement.addEventListener('click', () => {
+  themeElement.classList.toggle('active');
+  document.body.classList.toggle('active');
+  document.querySelector('.screen-number')
+    .classList.toggle('active');
+});
 
   // function for displaying the calculation on screen
 
